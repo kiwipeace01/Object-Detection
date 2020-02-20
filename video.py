@@ -39,7 +39,7 @@ while(True):
     print(h)
     print(w)
     
-    
+    count=1
     #print(circles)
     for i in circles[0,:]:
         # draw the outer circle
@@ -47,17 +47,16 @@ while(True):
         # draw the center of the circle
         cv2.circle(cimg,(i[0],i[1]),2,(255,0,0),2)  #(255,0,0)->blue for centre
         
-        font = cv2.FONT_HERSHEY_SIMPLEX
         
         if i[0]<(w/2) and i[1]<(h/2):
-            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+            print("ball",p,"position=top left")
         elif i[0]>(w/2) and i[1]<(h/2):
-            cv2.putText(img,'Bottom Right',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+            print("ball",p,"position=top right")
         elif i[0]<(w/2) and i[1]>(h/2):
-            cv2.putText(img,'Top Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+            print("ball",p,"position=bottom left")
         elif i[0]>(w/2) and i[1]>(h/2):
-            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-            
+            print("ball",p,"position=bottom right")
+        count+=1   
     
     
     cv2.imshow('frame',cimg)
