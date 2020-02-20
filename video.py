@@ -50,16 +50,21 @@ while(True):
         font = cv2.FONT_HERSHEY_SIMPLEX
         
         if i[0]<(w/2) and i[1]<(h/2):
-            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        elif i[0]>(w/2) and i[1]<(h/2):
-            cv2.putText(img,'Bottom Right',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        elif i[0]<(w/2) and i[1]>(h/2):
-            cv2.putText(img,'Top Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        elif i[0]>(w/2) and i[1]>(h/2):
-            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+            cv2.putText(cimg,'Top Left',(10,500), font, 2,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]>(w/2) and i[1]<(h/2):
+            cv2.putText(cimg,'Top Right',(10,500), font, 2,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]<(w/2) and i[1]>(h/2):
+            cv2.putText(cimg,'Bottom Left',(10,500), font, 2,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]>(w/2) and i[1]>(h/2):
+            cv2.putText(cimg,'Bottom Left',(10,500), font, 2,(255,255,255),2,cv2.LINE_AA)
             
-    
-    
+        pixels = cv2.countNonZero(r)
+        image_area = cimg.shape[0] * cimg.shape[1]
+        area_ratio = (pixels / image_area) * 100
+        
+        print('pixels', pixels)
+        print('area ratio', area_ratio) 
+
     cv2.imshow('frame',cimg)
     if cv2.waitKey(0) & 0xFF == ord('q'):
         break
