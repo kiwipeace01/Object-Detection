@@ -41,10 +41,15 @@ while(True):
         # draw the center of the circle
         cv2.circle(cimg,(i[0],i[1]),2,(255,0,0),2)  #(255,0,0)->blue for centre
     
+    #for getting height and width of image so as to use it further as coordintaes
+    (h,w)=cimg.shape[:2]
+    print(h)
+    print(w)
+    
     cv2.imshow('frame',cimg)
     if cv2.waitKey(0) & 0xFF == ord('q'):
         break
-
+         
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
