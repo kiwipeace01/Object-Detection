@@ -34,17 +34,31 @@ while(True):
     circles = cv2.HoughCircles(im2,cv2.HOUGH_GRADIENT,1,150,param1=50,param2=30,minRadius=0,maxRadius=0)
     circles = np.uint16(np.around(circles))#converting the x-coordinate,y-coordinate of center and radius to integers
     
+    #for getting height and width of image so as to use it further as coordintaes
+    (h,w)=cimg.shape[:2]
+    print(h)
+    print(w)
+    
+    
     #print(circles)
     for i in circles[0,:]:
         # draw the outer circle
         cv2.circle(cimg,(i[0],i[1]),i[2],(0,0,255),2)  #i[0]=x,i[1]=y&i[2]=radius,(0,0,255)->red color,2=thickness
         # draw the center of the circle
         cv2.circle(cimg,(i[0],i[1]),2,(255,0,0),2)  #(255,0,0)->blue for centre
+        
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        
+        if i[0]<(w/2) and i[1]<(h/2):
+            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]>(w/2) and i[1]<(h/2):
+            cv2.putText(img,'Bottom Right',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]<(w/2) and i[1]>(h/2):
+            cv2.putText(img,'Top Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+        else if i[0]>(w/2) and i[1]>(h/2):
+            cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
+            
     
-    #for getting height and width of image so as to use it further as coordintaes
-    (h,w)=cimg.shape[:2]
-    print(h)
-    print(w)
     
     cv2.imshow('frame',cimg)
     if cv2.waitKey(0) & 0xFF == ord('q'):
