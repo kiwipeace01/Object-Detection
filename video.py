@@ -40,24 +40,27 @@ while(True):
     print(w)
     
     count=1
+    sum1=0
     #print(circles)
     for i in circles[0,:]:
         # draw the outer circle
         cv2.circle(cimg,(i[0],i[1]),i[2],(0,0,255),2)  #i[0]=x,i[1]=y&i[2]=radius,(0,0,255)->red color,2=thickness
         # draw the center of the circle
         cv2.circle(cimg,(i[0],i[1]),2,(255,0,0),2)  #(255,0,0)->blue for centre
+        sum1+=22*i[2]*i[2]/7
         
         
         if i[0]<(w/2) and i[1]<(h/2):
-            print("ball",p,"position=top left")
+            print("ball",count,"position=top left")
         elif i[0]>(w/2) and i[1]<(h/2):
-            print("ball",p,"position=top right")
+            print("ball",count,"position=top right")
         elif i[0]<(w/2) and i[1]>(h/2):
-            print("ball",p,"position=bottom left")
+            print("ball",count,"position=bottom left")
         elif i[0]>(w/2) and i[1]>(h/2):
-            print("ball",p,"position=bottom right")
+            print("ball",count,"position=bottom right")
         count+=1   
-    
+    percent_area=(sum1/(h*w))*100
+    print(percent_area)
     
     cv2.imshow('frame',cimg)
     if cv2.waitKey(0) & 0xFF == ord('q'):
