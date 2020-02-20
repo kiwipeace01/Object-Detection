@@ -1,4 +1,5 @@
-
+import serial
+import time
 import numpy as np
 import cv2
 
@@ -61,6 +62,16 @@ while(True):
         count+=1   
     percent_area=(sum1/(h*w))*100
     print(percent_area)
+    
+    '''
+    arduino = serial.Serial('com4',9600)    #Create Serial port object called arduinoSerialData
+    time.sleep(2)    #wait for 2 secounds for the communication to get established
+    print(arduino.readline())    #read the serial data and print it as line
+
+    if (count-1)>=1:
+        arduino.write('1')
+        time.sleep(1)
+    '''
     
     cv2.imshow('frame',cimg)
     if cv2.waitKey(0) & 0xFF == ord('q'):
