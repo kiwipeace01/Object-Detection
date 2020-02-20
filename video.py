@@ -51,11 +51,11 @@ while(True):
         
         if i[0]<(w/2) and i[1]<(h/2):
             cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        else if i[0]>(w/2) and i[1]<(h/2):
+        elif i[0]>(w/2) and i[1]<(h/2):
             cv2.putText(img,'Bottom Right',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        else if i[0]<(w/2) and i[1]>(h/2):
+        elif i[0]<(w/2) and i[1]>(h/2):
             cv2.putText(img,'Top Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
-        else if i[0]>(w/2) and i[1]>(h/2):
+        elif i[0]>(w/2) and i[1]>(h/2):
             cv2.putText(img,'Bottom Left',(10,500), font, 4,(255,255,255),2,cv2.LINE_AA)
             
     
