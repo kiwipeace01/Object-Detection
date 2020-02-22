@@ -76,10 +76,10 @@ while(True):
         arduino = serial.Serial('COM7',9600)    #Create Serial port object called arduinoSerialData
         time.sleep(2)    #wait for 2 secounds for the communication to get established
         print(arduino.readline())    #read the serial data and print it as line
-        if (count-1)>=1:
+        if(count-1)>=1:
             arduino.write('1')
             time.sleep(1)
-        else if(count-1)<=1:
+        elif(count-1)<=1:
             arduino.write('0')
             time.sleep(1)
    
