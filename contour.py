@@ -28,9 +28,9 @@ while(True):
     cnt2 = contours[0]
     
     ret=cv2.matchShapes(cnt1,cnt2,1,0.0)
-    print (ret)
+    if(ret>1):
+        cv2.imshow('result2',thresh2)
     cv2.imshow('result1',edges)
-    cv2.imshow('result2',thresh2)
     if cv2.waitKey(1) & 0XFF==ord('q'):
         break
 cap.release()
