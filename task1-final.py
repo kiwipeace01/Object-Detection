@@ -71,20 +71,16 @@ while(True):
                 percentage=area/(h*w)*100
                 print('Percentage area occupied by ball = ',percentage,'%')
             print(count)
-                #print('Area was calculated',tot,'times')
-                
-                
-            if(count>1):
-                    arduino.write(('1').encode())
-                else:
-                    arduino.write(('0').encode())
-            
-            
-            
-                    
+            if(count>0):
+                arduino.write(('1').encode())
+            else:
+                arduino.write(('0').encode())
+                                    
     cv2.imshow('frame',frame)
     if cv2.waitKey(1) & 0XFF==ord('q'):
+        arduino.write(('0').encode())
         break
-    
+cap.release()
+cv2.destroyAllWindows
            
            
